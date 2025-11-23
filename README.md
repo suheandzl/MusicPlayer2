@@ -1,3 +1,7 @@
+**本项目由本人手动编译 集成了目前为止最新的更改 仅尝鲜用 感谢原作者**
+
+
+
 **简体中文 | [English](https://github.com/zhongyang219/MusicPlayer2/blob/master/README_en-us.md)**
 
 # MusicPlayer2 简介
