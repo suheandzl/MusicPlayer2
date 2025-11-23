@@ -14,10 +14,11 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.3
 
+      # 直接指定 Release 配置，不再做复杂检测
       - name: Build solution
-        run: msbuild MusicPlayer2.sln /p:Configuration=Release /p:Platform=Win32 /m
-        # 如果项目是 x64，请改成 /p:Platform=x64
+        run: msbuild MusicPlayer2.sln /p:Configuration=Release /m
 
+      # 上传所有可能的输出文件，避免只剩下 pdb
       - name: Upload all build outputs
         uses: actions/upload-artifact@v4
         with:
