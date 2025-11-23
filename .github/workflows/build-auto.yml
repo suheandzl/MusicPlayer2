@@ -1,0 +1,41 @@
+name: Auto Build Windows App
+
+on:
+  workflow_dispatch:   # 手动触发
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.3
+
+      - name: Detect available configurations
+        run: |
+          echo "Listing available configurations..."
+          msbuild MusicPlayer2.sln /pp > solution.txt
+          Select-String -Path solution.txt -Pattern "ProjectConfigurationPlatforms" | Out-File configs.txt
+          Get-Content configs.txt
+        shell: pwsh
+
+      - name: Build solution (try Release x64, fallback Release Win32)
+        run: |
+          try {
+            msbuild MusicPlayer2.sln /p:Configuration=Release /p:Platform=x64 /m
+          } catch {
+            msbuild MusicPlayer2.sln /p:Configuration=Release /p:Platform=Win32 /m
+          }
+        shell: pwsh
+
+      - name: Upload all build outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: MusicPlayer2-Windows
+          path: |
+            **/*.exe
+            **/*.dll
+            **/*.pdb
