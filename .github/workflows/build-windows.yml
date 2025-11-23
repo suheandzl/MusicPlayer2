@@ -15,13 +15,15 @@ jobs:
         uses: microsoft/setup-msbuild@v1.3
 
       - name: Build solution
-        run: msbuild MusicPlayer2.sln /p:Configuration=Release /p:Platform=x64 /m
+        run: msbuild MusicPlayer2.sln /p:Configuration=Release /p:Platform=Win32 /m
+        # 如果项目是 x64，请改成 /p:Platform=x64
 
-      - name: Upload artifact
+      - name: Upload all build outputs
         uses: actions/upload-artifact@v4
         with:
           name: MusicPlayer2-Windows
           path: |
-            MusicPlayer2/x64/Release/*.exe
-            MusicPlayer2/x64/Release/*.dll
-            MusicPlayer2/x64/Release/*.pdb
+            **/*.exe
+            **/*.dll
+            **/*.pdb
+
