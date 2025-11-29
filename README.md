@@ -1,12 +1,6 @@
+# 更新：好消息 目前SMTC修复想关代码已被成功合并 各位可以直接去原项目页获取最新更改 本分叉项目即刻归档 感谢@jayfunc 及原作者
+
 # 本项目由本人手动编译 集成了目前为止最新的更改 仅尝鲜用 不保证运行效果 如遇问题 请耐心等待原作者发版 在此感谢原作者
-
-
-
-
-
-
-
-
 
 **简体中文 | [English](https://github.com/zhongyang219/MusicPlayer2/blob/master/README_en-us.md)**
 
